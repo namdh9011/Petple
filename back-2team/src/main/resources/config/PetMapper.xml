@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pet">
+	<!-- Frontend가 보기 위한 모든 DB정보 -->
+	<select id="testAll" resultType="pet">
+		select * from pet
+	</select>
+	<!-- 유저 번호로 소유한 동물 출력 -->
+	<select id="selectAll" parameterType="java.lang.String"
+		resultType="pet">
+		select * from pet where unum = #{unum}
+	</select>
+	<!-- 동물 번호로 동물 한마리 정보 출력 -->
+	<select id="selectOne" parameterType="java.lang.String"
+		resultType="pet">
+		select * from pet where petnum = #{petnum}
+	</select>
+	<!-- unum,name,animal,gender,age,firstday를 받아서 petnum 출력 -->
+	<select id="selectPetnum" parameterType="pet"
+		resultType="pet">
+		select petnum from pet where unum = #{unum} and name = #{name} and animal = #{animal} and age = #{age} and firstday = #{firstday}
+	</select>
+	<!-- 새로운 동물 등록 -->
+	<insert id="insert" parameterType="pet">
+		insert into pet(unum,name,animal,gender,breed,age,firstday,img,intro)
+		values(#{unum},#{name},#{animal},#{gender},#{breed},#{age},#{firstday},#{img},#{intro})
+	</insert>
+	<!-- 동물 정보 수정 -->
+	<update id="update" parameterType="pet">
+		update pet set
+		unum=#{unum},name=#{name},animal=#{animal},gender=#{gender},breed=#{breed},age=#{age},firstday=#{firstday},img=#{img},intro=#{intro}
+		where petnum= #{petnum}
+	</update>
+	
+	<update id="updateimg" parameterType="pet">
+		update pet set
+		img= #{img} where petnum= #{petnum}
+	</update>
+	<!-- 동물 삭제 -->
+	<delete id="delete" parameterType="java.lang.String">
+		delete from pet where petnum = #{petnum}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+

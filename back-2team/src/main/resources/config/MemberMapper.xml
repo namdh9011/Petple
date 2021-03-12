@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="member">
+	<select id="testAll" resultType="member">
+    select * from member
+  </select>
+	
+  <select id="loginCheck" parameterType="member" resultType="member">
+    select * from member where email = #{email} and password = HEX(AES_ENCRYPT(#{password}, 'KEYPPP'))
+  </select>
+
+  <select id="selectUnum" parameterType="java.lang.String" resultType="java.lang.String">
+    select unum from member where email = #{email}
+  </select>
+
+  <select id="selectOne" parameterType="java.lang.String" resultType="member">
+    select * from member where unum = #{unum}
+  </select>
+
+  <select id="selectEmail" parameterType="java.lang.String" resultType="java.lang.String">
+   select email from member where email = #{email}
+  </select>
+  
+  <select id="selectNickname" parameterType="java.lang.String" resultType="member">
+   select * from member where nickname = #{nickname}
+  </select>
+  
+  <insert id="insert" parameterType="member">
+  	insert into member(name,email,password,nickname,phone) values(#{name},#{email},HEX(AES_ENCRYPT(#{password}, 'KEYPPP')),#{nickname},#{phone})
+  </insert>
+
+  <update id="update" parameterType="member">
+  	update member set name = #{name},nickname = #{nickname},phone =  #{phone},interest = #{interest} where unum = #{unum}
+  </update>
+
+  <update id="updatepassword" parameterType="member">
+  	update member set password = HEX(AES_ENCRYPT(#{password}, 'KEYPPP')) where unum = #{unum};
+  </update>
+
+  <update id="updateinterest" parameterType="member">
+  	update member set interest = #{interest} where unum = #{unum}
+  </update>
+
+  <update id="updateuserprofile" parameterType="member">
+  	update member set userprofile = #{userprofile} where unum = #{unum}
+  </update>
+  <update id="updaterole" parameterType="member">
+  	update member set role = #{role} where unum = #{unum}
+  </update>
+  
+  <delete id="delete" parameterType="java.lang.String">
+  	delete from member where unum = #{unum}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
+
+

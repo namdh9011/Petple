@@ -1,0 +1,96 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 11fr 1fr;
+}
+#followBox {
+    background-color: rgba(221, 29, 238, 0.055);
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+#followCategory {
+    text-align: center;
+}
+
+#followCategory label:hover {
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+#followCategory label {
+    -webkit-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio]+label {
+    display: inline-block;
+    padding: 20px;
+    border: solid 0.05em transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.164);
+    color: black;
+    cursor: pointer;
+    font-weight: lighter;
+}
+
+input[type=radio]:checked+label {
+    border: solid 0.05em transparent;
+    border-bottom-color: rgba(88, 15, 88, 0.836);
+    font-weight: normal;
+}
+
+.conBox {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+input[id="follower"]:checked~.con>.con1 {
+    display: block;
+}
+
+input[id="following"]:checked~.con>.con2 {
+    display: block;
+}
+
+.conBox {
+    height: 100px;
+    margin: 0 0 0 0;
+}
+
+.followPhoto {
+    border-radius: 50%;
+    float: left;
+    transform: scale(0.5);
+}
+.followNick {
+    margin-left: -100px;
+    transform: scale(0.8);
+    line-height: 90px;
+}
+
+/* 스마트폰 크기의 화면 */
+@media screen and (min-width: 375px) {
+    #followCategory {
+        font-size: 1.2rem;
+        border-radius: 10px;
+        height: 570px;
+    }
+}
+
+/* 850 이상(태블릿 화면 이상)에서는 4등분 */
+@media screen and (min-width: 850px) {
+    #followCategory {
+        font-size: 2rem;
+        border-radius: 10px;
+    }
+}

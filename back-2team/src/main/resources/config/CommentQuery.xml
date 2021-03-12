@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pet.sns.model.dao.CommentDaoMgr">
+	<select id="selectall" parameterType="int" resultType="comment">
+		select
+		no,usernum,nickname, userprofile, postnum,date,contents from comment
+		where postnum = #{postnum} 
+	</select>
+	<insert id="insert" parameterType="comment">
+		insert into comment
+		(usernum,nickname,userprofile,postnum,date,contents)
+		values
+		(#{usernum}, (select nickname from member where unum = #{usernum})
+		,
+		(select userprofile from member where unum = #{usernum}),
+		#{postnum},sysdate(),#{contents});
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from comment where no =
+		#{no}
+	</delete>
+	<update id="changeprofile"  parameterType="int">
+		update comment set userprofile  = (select userprofile from member where unum =#{usernum}) where usernum = #{usernum};
+	</update>
+</mapper>

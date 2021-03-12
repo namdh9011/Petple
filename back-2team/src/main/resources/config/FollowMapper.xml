@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="follow">
+	<select id="testAll" resultType="follow">
+		select * from follow
+	</select>
+
+	<select id="selectOne" parameterType="java.lang.String"
+		resultType="follow">
+		select * from follow where unum = #{unum}
+	</select>
+
+	<select id="selectFollower" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select follower from follow where unum = #{unum}
+	</select>
+
+	<select id="selectMyFollow" parameterType="follow"
+		resultType="follow">
+		select * from follow where unum = #{unum} and following like concat("% ",#{following}," %")
+	</select>
+
+	<select id="selectFollowing" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select following from follow where unum = #{unum}
+	</select>
+	
+	<insert id="insert" parameterType="follow">
+		insert into follow(unum, follower, following) values(#{unum},#{follower},#{following})
+	</insert>
+
+	<update id="update" parameterType="follow">
+		update follow set follower = #{follower}, following=#{following} where unum = #{unum}
+	</update>
+
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from follow where unum = #{unum}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+#notiBox {
+    background-color: rgba(238, 29, 151, 0.055);
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+#notiCategory {
+    text-align: center;
+}
+
+#notiCategory label:hover {
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+#notiCategory label {
+    -webkit-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio] + label {
+    display: inline-block;
+    padding: 20px;
+    background: rgba(255, 192, 203, 0.473);
+    border: solid 0.05em transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.164);
+    color: black;
+    cursor: pointer;
+}
+
+input[type=radio]:checked + label {
+    background: rgba(238, 36, 137, 0.692);
+    border: solid 0.05em transparent;
+    border-bottom-color: rgba(94, 17, 17, 0.822);
+}
+
+.conBox {
+    width: 500px;
+    margin: 0 auto;
+    display: none;
+    text-align: left;
+}
+
+input[id="all"]:checked~.con>.con1 {
+    display: block;
+}
+
+input[id="follow"]:checked~.con>.con2 {
+    display: block;
+}
+
+input[id="like"]:checked~.con>.con3 {
+    display: block;
+}
+
+input[id="comment"]:checked~.con>.con4 {
+    display: block;
+}
+
+/* 스마트폰 크기의 화면 */
+@media screen and (min-width: 500px) {
+    #notiCategory {
+        font-size: 1.5rem;
+        border-radius: 10px;
+    }
+
+    .conBox {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+}
+
+/* 850 이상(태블릿 화면 이상)에서는 4등분 */
+@media screen and (min-width: 850px) {
+    #notiCategory {
+        font-size: 2rem;
+        border-radius: 10px;
+    }
+
+    .conBox {
+        font-size: 1.5rem;
+        margin-top: 30px;
+    }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="likepost">
+	<select id="selectAll" resultType="likepost">
+    select * from likepost
+  </select>
+	
+  <select id="selectOne" parameterType="likepost" resultType="likepost">
+    select * from likepost where unum = #{unum} and pnum = #{pnum}
+  </select>
+
+  <select id="selectLikepost" parameterType="likepost" resultType="String">
+    select likepost from likepost where unum = #{unum} and pnum = #{pnum}
+  </select>
+
+  <insert id="insert" parameterType="likepost">
+  	insert into likepost(unum, pnum) values(#{unum},#{pnum})
+  </insert>
+
+  <update id="update" parameterType="likepost">
+  	update likepost set likepost = #{likepost} where unum = #{unum} and pnum = #{pnum}
+  </update>
+  
+  <delete id="delete" parameterType="likepost">
+  	delete from likepost where unum = #{unum} and pnum = #{pnum}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
+
+

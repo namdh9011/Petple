@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.pet.sns.model.dto.Member"   		alias="member"/>
+		<typeAlias type="com.pet.sns.model.dto.Post"   		alias="post"/>
+		<typeAlias type="com.pet.sns.model.dto.Comment"   	alias="comment"/>
+		<typeAlias type="com.pet.sns.model.dto.Pet"   		alias="pet"/>
+		<typeAlias type="com.pet.sns.model.dto.Tag"   		alias="tag"/>
+		<typeAlias type="com.pet.sns.model.dto.Follow"   		alias="follow"/>
+		<typeAlias type="com.pet.sns.model.dto.Likepost"   		alias="likepost"/>
+	</typeAliases>
+	<mappers>
+	 <mapper resource="config/MemberMapper.xml" />
+	 <mapper resource="config/CommentQuery.xml" />
+	 <mapper resource="config/PostQuery.xml" />
+	 <mapper resource="config/PetMapper.xml" />
+	 <mapper resource="config/FollowMapper.xml" />
+	 <mapper resource="config/LikepostMapper.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

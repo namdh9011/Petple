@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.pet.sns.model.dao.PostDaoMgr">
+
+
+	<select id="selectpnum" parameterType="post" resultType="int">
+		select
+		pnum
+		from post
+		where unum = #{unum} and title = #{title} and contents =
+		#{contents}
+		order by date desc limit 1;
+	</select>
+
+	<select id="selectone" parameterType="int" resultType="post">
+		select
+		pnum,unum,title,img,contents,likes,hits,tags,comments,date,privacy
+		from post
+		where pnum= #{pnum}
+	</select>
+	<select id="selectall" resultType="post">
+		select
+		pnum,unum,title,img,contents,likes,hits,tags,comments,date,privacy
+		from post where privacy in ('all') order by date desc;
+
+	</select>
+	<select id="selectmine" parameterType="int" resultType="post">
+		select
+		pnum,unum,title,img,contents,likes,hits,tags,comments,date,privacy
+		from post
+		where unum = #{unum} order by date desc
+	</select>
+	<select id="selectten" parameterType="int" resultType="post">
+		select
+		pnum,unum,title,img,contents,likes,hits,tags,comments,date,privacy
+		from post where privacy in ('all') order by date desc limit 0, #{num};
+	</select>
+	<select id="selectfollower"
+		resultType="post">
+
+		select
+		pnum,unum,title,img,contents,likes,hits,tags,comments,date,privacy
+		from post where privacy in ('all','friend') and unum in
+		
+
+		<foreach item="item" index="index" collection="array" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		
+		order by date desc;
+
+	</select>
+
+	<insert id="insert" parameterType="post">
+		insert into
+		post(unum,title,contents,tags,date,privacy)
+		values
+		(#{unum},#{title},#{contents},#{tags},sysdate(),#{privacy})
+	</insert>
+
+	<update id="update" parameterType="post">
+		update post set title =
+		#{title},
+		contents =#{contents},
+		tags =#{tags},
+		privacy
+		= #{privacy},
+		img =
+		#{img}
+		where pnum =#{pnum}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from post where pnum =
+		#{pnum}
+	</delete>
+
+	<update id="hitup" parameterType="int">
+		update post set hits = hits+1
+		where pnum = #{pnum}
+	</update>
+
+	<update id="likeup" parameterType="int">
+		update post set likes =
+		likes+1
+		where pnum = #{pnum}
+	</update>
+	<update id="likedown" parameterType="int">
+		update post set likes =
+		likes-1
+		where pnum = #{pnum}
+	</update>
+
+	<update id="commentsup" parameterType="int">
+		update post set comments =
+		comments+1
+		where pnum = #{pnum}
+	</update>
+	<update id="commentsdown" parameterType="int">
+		update post set comments
+		=
+		comments-1
+		where pnum = #{pnum}
+	</update>
+
+	<!-- tag -->
+
+	<insert id="inserttag" parameterType="string">
+		insert into tag (word)
+		values (#{word})
+	</insert>
+
+	<select id="selecttnum" parameterType="string"
+		resultType="Integer">
+		select tnum from tag where word = #{word}
+	</select>
+	<select id="selecttag" parameterType="int" resultType="string">
+		select
+		word from tag where tnum in
+		(select tagnum from post_tag
+		where postnum =
+		#{pnum})
+	</select>
+	<delete id="deletetag" parameterType="int">
+		delete from post_tag where
+		postnum = #{pnum}
+	</delete>
+	<select id="tagsearch" parameterType="string" resultType="post">
+		select
+		* from post where pnum in (
+		select postnum from post_tag where tagnum =
+		(select tnum from tag where word = #{word} limit 1 ))
+	</select>
+
+	<!-- post_tag -->
+	<insert id="posttag" parameterType="tag">
+		insert into post_tag
+		(postnum, tagnum) values (#{postnum}, #{tagnum})
+	</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,283 @@
+/* 전체 wrap */
+#postBox {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: grid;
+    grid-gap: 10px;
+    background-color: rgba(221, 29, 238, 0.055);
+    border-radius: 30px;
+}
+
+/* 사진 영역 */
+#photoBox {
+    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    text-align: center;
+    padding-top: 30px;
+}
+/* 사진 */
+.photo {
+    width: 90%;
+    height: 380px;
+}
+
+/* 제목 내용 등등 */
+#textBox {
+    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    padding-top: 30px;
+}
+
+/* 게시자 정보 */
+#postUser {
+    height: 15%;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(109, 7, 7, 0.089);
+}
+
+.postUserPs {
+    float: left;
+    border-radius:45px;
+}
+
+/* 게시자 닉네임 */
+#postUserName {
+    line-height: 90px;
+    margin-left: 90px;
+    font-size: x-large;
+    color: rosybrown;
+}
+
+/* 컨텐츠(제목, 내용, 해시태그 */
+#postConBox {
+    height: 200px;
+    border-bottom: 1px solid rgba(109, 7, 7, 0.089);
+}
+
+#postTitle {
+    height: 20%;
+}
+
+#postCon {
+    height: 60%;
+}
+
+#hashtag {
+    height: 20%;
+}
+
+#postButtons {
+    height: 70px;
+    border-bottom: 1px solid rgba(109, 7, 7, 0.089);
+}
+
+#likeButton {
+    float: left;
+    /* padding: 위 오 아래 왼 */
+    padding: 2px 10px 2px 2px;
+}
+
+/* 좋아요 버튼 마우스 오버시
+#likeButton img:last-child {
+    display:none
+} 
+#likeButton:hover img:first-child {
+    display:none
+} 
+#likeButton:hover img:last-child {
+    display:inline-block
+} */
+
+
+#commentButton {
+    float: left;
+    padding: 2px 10px 2px 2px;
+}
+
+/* #commentButton img:last-child {
+    display:none
+} 
+#commentButton:hover img:first-child {
+    display:none
+} 
+#commentButton:hover img:last-child {
+    display:inline-block
+} */
+
+
+/* #shareButton {
+    padding: 2px 6px 2px 2px;
+    float: left;
+}
+
+#shareButton img:last-child {
+    display:none
+} 
+#shareButton:hover img:first-child {
+    display:none
+} 
+#shareButton:hover img:last-child {
+    display:inline-block
+} */
+
+textarea:focus {
+    outline: none;
+}
+
+.myCommentWrite {
+    font-size: 1.2rem;
+    height: 38px;
+    width: 80%;
+    border: 0;
+    border-radius: 7px;
+    flex-grow: 1;
+}
+
+.comment_user_profile img {
+    margin-top: 20px;
+    border-radius: 30px;
+    width: 32px;
+    height: 32px;
+}
+.comment_user_nickname{
+    margin-top: 20px;
+}
+.comment_user_contents{
+    margin-top: 20px;
+}
+.comments {
+    height: auto;
+    /* font-family: 'Nanum Pen Script', cursive; */
+    font-family: 'Poor Story', cursive;
+    font-size: larger;
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr;
+}
+.commentSend {
+    border: 0;
+    outline: 0;
+    background-color: rgba(255, 255, 255, 0);
+
+    position: relative;
+    display: inline-block;
+}
+
+.commentSendButton {
+    padding-bottom: 30px;
+}
+
+.commentSend img:last-child {
+    display:none
+} 
+.commentSend:hover img:first-child {
+    display:none
+} 
+.commentSend:hover img:last-child {
+    display:inline-block
+}
+
+.arrowBox {
+    display: none;
+    position: absolute;
+    width: 100px;
+    padding: 8px;
+    left: 0;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;  
+    border-radius: 8px;
+    background: rgb(143, 21, 133);
+    color: #fff;
+    font-size: 14px;
+    margin-top: -10px;
+  }
+  
+  .arrowBox:after {
+    position: absolute;
+    bottom: 100%;
+    left: 40%;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: rgb(143, 21, 133);
+    border-width: 10px;
+    pointer-events: none;
+    content: " ";
+  }
+  
+  div:hover + p.arrowBox {
+    display: block;
+  }
+
+  
+/* 스마트폰 크기의 화면 */
+@media screen and (max-width: 380px) {
+    #postBox {
+        grid-template-columns: 1fr;
+    }
+    .photo {
+        width: 90%;
+        height: 270px;
+    }
+    #postTitle {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #postCon {
+        font-size: 1.5rem;
+    }
+
+    #hashtag {
+        font-size: 1.5rem;
+    }
+
+    /* .myCommentWrite{
+        width:100px
+    } */
+    .commentSend {
+        width: 30px;
+        height: 30px;
+    }
+    
+    #deleteButton {
+        visibility: hidden;
+        /* display: none; */
+    }
+
+    .comments {
+        height: auto;
+        /* font-family: 'Nanum Pen Script', cursive; */
+        font-family: 'Poor Story', cursive;
+        font-size: larger;
+        display: grid;
+        grid-template-columns: 1fr 1fr 3fr;
+    }
+
+}
+
+/* 850 이상(태블릿 화면 이상)에서는 4등분 */
+@media screen and (min-width: 850px) {
+    #postBox {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #postTitle {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    #postCon {
+        font-size: 2rem;
+    }
+
+    #hashtag {
+        font-size: 2rem;
+    }
+}
+    
